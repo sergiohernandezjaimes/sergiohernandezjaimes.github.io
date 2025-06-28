@@ -8,6 +8,13 @@
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
 </head>
 <body>
+  <div class="theme-toggle">
+    <label class="switch">
+      <input type="checkbox" id="darkModeToggle">
+      <span class="slider round"></span>
+    </label>
+    <span>🌙</span>
+  </div>
   <header>
     <h1>Sergio Hernandez</h1>
     <p>Full-Stack Systems Engineer • Building Tools That Move People</p>
@@ -22,7 +29,7 @@
   <li class ="nav-item">
     <a class="nav-link" href="#projects">Projects</a>
   </li>
-  
+
   <section id="projects" class="container mt-5">
     <h2 class="mb-4">🧠 Recent Projects</h2>
 
@@ -59,5 +66,21 @@
     <p>📫 <a href="mailto:sergiohernandezjaimes@gmail.com">sergiohernandezjaimes@gmail.com</a></p>
     <p>🔗 <a href="https://linkedin.com/in/sergio-hernandez-1948b0159" target="_blank">LinkedIn</a> | <a href="https://github.com/sergiohernandezjaimes" target="_blank">GitHub</a></p>
   </footer>
+  <script>
+    const toggle= document.getElementById('darkModeToggle');
+    const body= document.body;
+
+    //Load saved preferance
+    if (localStorage.getItem('theme') == 'dark') {
+      body.classList.add('dark-mode');
+      toggle.checked = true;
+    }
+
+    toggle.addEventListener('change', () => {
+      body.classList.toggle('dark-mode');
+      const theme = body.classList.contains('dark-mode') ? 'dark' : 'light';
+      localStorage.setItem('theme', theme);
+    });
+    </script>
 </body>
 </html>
